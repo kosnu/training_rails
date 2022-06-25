@@ -12,7 +12,7 @@ bundle_install:
 	docker compose exec backend bundle install
 
 rubocop_auto_correct:
-	docker compose exec backend bundle exec rubocop -a
+	docker compose exec backend bundle exec rubocop -A
 
 rubocop_gen_todo:
 	docker compose exec backend bundle exec rubocop --auto-gen-config --exclude-limit 99999 --no-offense-counts --no-auto-gen-timestamp
