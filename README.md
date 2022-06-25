@@ -2,13 +2,14 @@
 
 ## はじめに
 
-Build しましょう
+セットアップ方法
 
 ```shell
-docker compose build
+make
 ```
 
-DB を作りましょう
+起動
+
 ```shell
-docke compose run --rm backend rails db:create
+make start
 ```
