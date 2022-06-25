@@ -13,3 +13,13 @@ AllCops:
     - 'bin/**/*'
     - 'tmp/**/*'
     - 'public/**/*'
+    - 'db/schema.rb'
+
+# NOTE: class/module のコメントは書かなくてよい
+Style/Documentation:
+  Enabled: false
+
+# NOTE: config だけ行の文字数制限をしない
+Layout/LineLength:
+  Exclude:
+    - 'config/**/*'
