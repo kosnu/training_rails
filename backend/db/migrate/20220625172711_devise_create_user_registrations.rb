@@ -3,7 +3,7 @@
 class DeviseCreateUserRegistrations < ActiveRecord::Migration[7.0]
   def change
     create_table :user_registrations do |t|
-      t.references :users, foreign_key: true
+      t.references :user, foreign_key: true
       ## Confirmable
       t.string :confirmation_token
       t.datetime :confirmed_at
@@ -12,6 +12,7 @@ class DeviseCreateUserRegistrations < ActiveRecord::Migration[7.0]
 
       t.timestamps null: false
     end
+
     add_index :user_registrations, :confirmation_token, unique: true
   end
 end

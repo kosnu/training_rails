@@ -15,46 +15,46 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_172738) do
   enable_extension "plpgsql"
 
   create_table "user_email_authentications", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_user_email_authentications_on_email", unique: true
-    t.index ["users_id"], name: "index_user_email_authentications_on_users_id"
+    t.index ["user_id"], name: "index_user_email_authentications_on_user_id"
   end
 
   create_table "user_lockings", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.datetime "locked_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_user_lockings_on_users_id"
+    t.index ["user_id"], name: "index_user_lockings_on_user_id"
   end
 
   create_table "user_password_resets", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["reset_password_token"], name: "index_user_password_resets_on_reset_password_token", unique: true
-    t.index ["users_id"], name: "index_user_password_resets_on_users_id"
+    t.index ["user_id"], name: "index_user_password_resets_on_user_id"
   end
 
   create_table "user_registrations", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["confirmation_token"], name: "index_user_registrations_on_confirmation_token", unique: true
-    t.index ["users_id"], name: "index_user_registrations_on_users_id"
+    t.index ["user_id"], name: "index_user_registrations_on_user_id"
   end
 
   create_table "user_trackings", force: :cascade do |t|
-    t.bigint "users_id"
+    t.bigint "user_id"
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
@@ -62,7 +62,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_172738) do
     t.string "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["users_id"], name: "index_user_trackings_on_users_id"
+    t.index ["user_id"], name: "index_user_trackings_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -71,9 +71,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_172738) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "user_email_authentications", "users", column: "users_id"
-  add_foreign_key "user_lockings", "users", column: "users_id"
-  add_foreign_key "user_password_resets", "users", column: "users_id"
-  add_foreign_key "user_registrations", "users", column: "users_id"
-  add_foreign_key "user_trackings", "users", column: "users_id"
+  add_foreign_key "user_email_authentications", "users"
+  add_foreign_key "user_lockings", "users"
+  add_foreign_key "user_password_resets", "users"
+  add_foreign_key "user_registrations", "users"
+  add_foreign_key "user_trackings", "users"
 end
