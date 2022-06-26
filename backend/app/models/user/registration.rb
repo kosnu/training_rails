@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class User
-  class Registration
-    devise :confirmable
+class User::Registration < ApplicationRecord
+  devise :confirmable
 
-    belongs_to :user
-  end
+  belongs_to :user
 end

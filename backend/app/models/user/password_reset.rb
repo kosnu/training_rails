@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class User
-  class PasswordReset
-    devise :recoverable
+class User::PasswordReset < ApplicationRecord
+  devise :recoverable
 
-    belongs_to :user
-  end
+  belongs_to :user
 end

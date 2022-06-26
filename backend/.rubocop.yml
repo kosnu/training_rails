@@ -19,6 +19,12 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+# NOTE: ネストさせるとModelの挙動が変わるので `compact`
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - 'config/**/*'
+
 # NOTE: config だけ行の文字数制限をしない
 Layout/LineLength:
   Exclude:

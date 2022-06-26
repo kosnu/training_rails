@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class User
-  class Tracking
-    devise :trackable
+class User::Tracking < ApplicationRecord
+  devise :trackable
 
-    belongs_to :user
-  end
+  belongs_to :user
 end

@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-class User
-  class Locking
-    devise :lockable
+class User::Locking < ApplicationRecord
+  devise :lockable
 
-    belongs_to :user
-  end
+  belongs_to :user
 end

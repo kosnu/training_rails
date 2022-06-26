@@ -8,4 +8,6 @@ class User < ApplicationRecord
   has_one :password_reset, dependent: :destroy
   has_one :locking, dependent: :destroy
   has_one :tracking, dependent: :destroy
+
+  delegate :email, to: :email_authentication
 end
