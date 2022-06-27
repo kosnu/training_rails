@@ -56,6 +56,10 @@ gem 'devise', '4.8.1'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', '1.5.0', platforms: %i[mri mingw x64_mingw]
+
+  # Test
+  gem 'rspec-rails', '5.1.2'
+  gem 'rubocop-rspec', '2.11.1', require: false
 end
 
 group :development do
@@ -77,4 +81,7 @@ group :test do
   gem 'capybara', '3.37.1'
   gem 'selenium-webdriver', '4.3.0'
   gem 'webdrivers', '5.0.0'
+
+  # Test data
+  gem 'factory_bot', '6.2.1'
 end
