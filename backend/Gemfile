@@ -83,5 +83,5 @@ group :test do
   gem 'webdrivers', '5.0.0'
 
   # Test data
-  gem 'factory_bot', '6.2.1'
+  gem 'factory_bot_rails', '6.2.0'
 end
