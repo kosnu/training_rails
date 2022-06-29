@@ -30,3 +30,11 @@ Style/ClassAndModuleChildren:
 Layout/LineLength:
   Exclude:
     - 'config/**/*'
+
+# NOTE: RSpecの `context` で when や with などを使うことを強制しない
+RSpec/ContextWording:
+  Enabled: false
+
+# NOTE: テストの最大確認数を「5」にする
+RSpec/MultipleExpectations:
+  Max: 5
