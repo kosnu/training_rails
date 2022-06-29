@@ -3,6 +3,7 @@ inherit_from: .rubocop_todo.yml
 require:
   - rubocop-rails
   - rubocop-performance
+  - rubocop-rspec
 
 AllCops:
   NewCops: enable
@@ -13,3 +14,27 @@ AllCops:
     - 'bin/**/*'
     - 'tmp/**/*'
     - 'public/**/*'
+    - 'db/schema.rb'
+
+# NOTE: class/module のコメントは書かなくてよい
+Style/Documentation:
+  Enabled: false
+
+# NOTE: ネストさせるとModelの挙動が変わるので `compact`
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+  Exclude:
+    - 'config/**/*'
+
+# NOTE: config だけ行の文字数制限をしない
+Layout/LineLength:
+  Exclude:
+    - 'config/**/*'
+
+# NOTE: RSpecの `context` で when や with などを使うことを強制しない
+RSpec/ContextWording:
+  Enabled: false
+
+# NOTE: テストの最大確認数を「5」にする
+RSpec/MultipleExpectations:
+  Max: 5
