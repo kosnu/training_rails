@@ -29,19 +29,17 @@ class UserForm < FormBase
   end
 
   def persist
-    if user.invalid? && user.registration.invalid? && user.email_authentication.invalid?
-      raise ActiveRecord::RecordInvalid
-    end
+    raise ActiveRecord::RecordInvalid if user_invalid?(user)
 
     ActiveRecord::Base.transaction do
-      user.save!
-      user.registration.save!
-      user.email_authentication.save!
+      save_user(user)
     end
 
     true
   rescue ActiveRecord::RecordInvalid
     errors_from_user
+    errors_from_user_registration
+    errors_from_user_email_authentication
 
     false
   end
@@ -50,13 +48,31 @@ class UserForm < FormBase
     user.errors.each do |error|
       errors.add(:base, error.full_message)
     end
+  end
 
+  def errors_from_user_registration
     user.registration.errors.each do |error|
       errors.add(:registration, error.full_message)
     end
+  end
 
+  def errors_from_user_email_authentication
     user.email_authentication.errors.each do |error|
       errors.add(:email_authentication, error.full_message)
     end
+  end
+
+  # ===========
+
+  # @param [User] user
+  def user_invalid?(user)
+    user.invalid? && user.registration.invalid? && user.email_authentication.invalid?
+  end
+
+  # @param [User] user
+  def save_user(user)
+    user.save!
+    user.registration.save!
+    user.email_authentication.save!
   end
 end
