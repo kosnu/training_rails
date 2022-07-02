@@ -6,8 +6,6 @@
 # Note that changes in the inspected code, or installation of new
 # versions of RuboCop, may require this file to be generated again.
 
-# Configuration parameters: AllowedConstants.
-Style/Documentation:
+Rails/I18nLocaleTexts:
   Exclude:
-    - 'app/helpers/application_helper.rb'
-    - 'config/application.rb'
+    - 'app/controllers/user/registrations_controller.rb'

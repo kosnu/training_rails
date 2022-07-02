@@ -1,0 +1,17 @@
+<h2>Resend confirmation instructions</h2>
+
+<%= form_with model: @user_form, url: registration_confirmation_path(@user_form) do |f| %>
+
+  <%# TODO: バリデーションに引っかかった時、エラーになるので修正する %>
+  <% if @user_form.errors.any? %>
+    <% @user_form.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :email %>
+  <%= f.email_field :email %>
+  <%= f.submit %>
+<% end %>
