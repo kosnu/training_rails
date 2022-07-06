@@ -1,1 +1,29 @@
 <h2>Registration Form</h2>
+
+<%= form_with url: finish_user_registration_path do |f| %>
+  <p>
+    <%= f.label :name %>
+    <%= f.text_field :name, value: resource.user.name, disabled: true %>
+  </p>
+
+  <p>
+    <%= f.label :email %>
+    <%= f.email_field :email, value: resource.email, disabled: true %>
+  </p>
+
+  <p>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %>
+  </p>
+
+  <p>
+    <%= label_tag :password_confirmation %>
+    <%= password_field_tag :password_confirmation %>
+  </p>
+
+  <p>
+    <%= hidden_field_tag :confirmation_token, resource.confirmation_token %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
