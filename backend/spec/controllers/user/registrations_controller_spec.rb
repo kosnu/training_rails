@@ -51,10 +51,19 @@ RSpec.describe User::RegistrationsController, type: :request do
     end
   end
 
-  xdescribe 'GET /registrations/confirmation' do
-    subject(:request) { get registration_confirmation_path }
+  describe 'GET /registrations/confirmation' do
+    subject(:request) { get registration_confirmation_path, params: }
 
     context '正常時' do
+      let(:user) { create :user }
+
+      let(:params) do
+        {
+          confirmation_token: params_confirmation_token
+        }
+      end
+      let(:params_confirmation_token) { user.registration.confirmation_token }
+
       it 'アクセスできること' do
         request
         expect(response).to have_http_status :ok
