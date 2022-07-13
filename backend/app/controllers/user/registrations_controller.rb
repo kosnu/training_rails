@@ -47,7 +47,8 @@ class User::RegistrationsController < Devise::ConfirmationsController
       @user = resource.user
       @user_email_authentication =
         registered_password(
-          @user, params[:password].to_s,
+          @user,
+          params[:password].to_s,
           params[:password_confirmation].to_s
         )
       resource.destroy!
