@@ -55,7 +55,7 @@ RSpec.describe User::RegistrationsController, type: :request do
     subject(:request) { get registration_confirmation_path, params: }
 
     context '正常時' do
-      let(:user) { create :user }
+      let(:user) { create :user, :confirming }
 
       let(:params) do
         {
@@ -71,13 +71,37 @@ RSpec.describe User::RegistrationsController, type: :request do
     end
   end
 
-  xdescribe 'POST /registration/finish' do
-    subject(:request) { post finish_user_registration_path }
+  describe 'POST /registration/finish' do
+    subject(:request) { post finish_user_registration_path, params: }
+
+    let(:params) { {} }
 
     context '正常時' do
+      let(:user) { create :user, :confirming }
+
+      let(:params) do
+        {
+          confirmation_token: user.registration.confirmation_token,
+          password: 'test0123',
+          password_confirmation: 'test0123'
+        }
+      end
+
       it 'アクセスできること' do
         request
         expect(response).to have_http_status :ok
+      end
+
+      it '暗号化したパスワードが設定されていること' do
+        request
+        user.reload
+        expect(user.email_authentication.encrypted_password).to be_present
+      end
+
+      it '登録確認レコードが削除されていること' do
+        request
+        user.reload
+        expect(user.registration).to be_nil
       end
     end
   end
