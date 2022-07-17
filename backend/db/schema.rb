@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_06_25_172738) do
+ActiveRecord::Schema[7.0].define(version: 2022_07_16_100851) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "eateries", force: :cascade do |t|
+    t.string "name", default: "", null: false
+    t.string "address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "eatery_users", force: :cascade do |t|
+    t.bigint "eatery_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["eatery_id"], name: "index_eatery_users_on_eatery_id"
+    t.index ["user_id"], name: "index_eatery_users_on_user_id"
+  end
 
   create_table "user_email_authentications", force: :cascade do |t|
     t.bigint "user_id"
@@ -73,6 +89,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_06_25_172738) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "eatery_users", "eateries"
+  add_foreign_key "eatery_users", "users"
   add_foreign_key "user_email_authentications", "users"
   add_foreign_key "user_lockings", "users"
   add_foreign_key "user_password_resets", "users"
