@@ -9,5 +9,8 @@ class User < ApplicationRecord
   has_one :locking, dependent: :destroy
   has_one :tracking, dependent: :destroy
 
+  has_many :eatery_users, dependent: :destroy
+  has_many :eateries, through: :eatery_users
+
   delegate :email, to: :email_authentication
 end
