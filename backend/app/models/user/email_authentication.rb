@@ -9,7 +9,7 @@ class User::EmailAuthentication < ApplicationRecord
 
   # @note ユーザー登録時はパスワードがない状態で登録するためメソッドを上書きしている
   def password_required?
-    return false if user.registration.confirmed_at.nil?
+    return false if user.registration&.confirmed_at.nil?
 
     !persisted? || !password.nil? || !password_confirmation.nil?
   end
