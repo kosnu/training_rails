@@ -14,4 +14,6 @@ Rails.application.routes.draw do
   # TODO: ログインルーティング
   # TODO: ログアウトルーティング
   devise_for :users
+
+  resources :eateries
 end
