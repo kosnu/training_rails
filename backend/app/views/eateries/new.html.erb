@@ -1,0 +1,16 @@
+<h2>Add eatery</h2>
+
+<%= form_with model: @eatery do |f| %>
+
+  <% if @eatery.errors.any? %>
+    <% @eatery.errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <%= f.submit %>
+<% end %>
