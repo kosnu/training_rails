@@ -8,6 +8,12 @@
     {
       "matchUpdateTypes": ["patch"],
       "automerge": true
+    },
+    {
+      "matchPackagePatterns": "^rubocop",
+      "groupName": [
+        "RuboCop packages"
+      ]
     }
   ]
 }
