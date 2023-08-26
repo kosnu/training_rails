@@ -59,7 +59,7 @@ group :development, :test do
 
   # Test
   gem 'rspec-rails', '5.1.2'
-  gem 'rubocop-rspec', '2.11.1', require: false
+  gem 'rubocop-rspec', '2.23.2', require: false
 end
 
 group :development do
