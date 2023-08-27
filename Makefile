@@ -8,6 +8,9 @@ start:
 stop:
 	docker compose down
 
+test:
+	docker compose exec backend bundle exec rspec
+
 bundle_install:
 	docker compose exec backend bundle install
 
