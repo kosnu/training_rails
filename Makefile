@@ -1,6 +1,6 @@
 init:
 	docker compose build
-	docke compose run --rm backend rails db:create
+	docker compose run --rm backend rails db:create
 
 start:
 	docker compose up -d
