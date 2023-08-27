@@ -1,6 +1,13 @@
 # frozen_string_literal: true
 
 class User::RegistrationsController < Devise::ConfirmationsController
+  # GET /resource/confirmation?confirmation_token=abcdef
+  def show
+    super do
+      return render :show
+    end
+  end
+
   # GET /resource/confirmation/new
   def new
     # NOTE: 空のインスタンスが欲しくて `nil` で初期化しました
@@ -28,19 +35,8 @@ class User::RegistrationsController < Devise::ConfirmationsController
       respond_with(@user_form)
     end
   end
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
-
-  # GET /resource/confirmation?confirmation_token=abcdef
-  def show
-    super do
-      return render :show
-    end
-  end
 
   # POST /registration/finish
-  # rubocop:disable Metrics/AbcSize
-  # rubocop:disable Metrics/MethodLength
   def finish
     self.resource = resource_class.confirm_by_token(params[:confirmation_token])
     ActiveRecord::Base.transaction do

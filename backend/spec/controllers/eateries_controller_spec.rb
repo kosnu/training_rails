@@ -11,7 +11,7 @@ RSpec.describe EateriesController, type: :request do
 
     context '正常時' do
       before do
-        create :eatery, name: 'Test Eatery', users: [sign_in_user]
+        create(:eatery, name: 'Test Eatery', users: [sign_in_user])
       end
 
       it 'アクセスできること' do

@@ -5,5 +5,5 @@ RSpec.shared_context 'sign_in', shared_context: :metadata do
     sign_in(sign_in_user)
   end
 
-  let(:sign_in_user) { create :user, :confirmed }
+  let(:sign_in_user) { create(:user, :confirmed) }
 end
