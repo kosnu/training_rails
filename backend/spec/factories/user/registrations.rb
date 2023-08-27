@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :user_registration, class: 'User::Registration' do
-    association :user
+    user
     confirmation_token do
       # Devise#friendly_token より
       length = (20 * 3) / 4

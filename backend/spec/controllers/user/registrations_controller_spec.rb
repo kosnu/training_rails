@@ -55,7 +55,7 @@ RSpec.describe User::RegistrationsController, type: :request do
     subject(:request) { get registration_confirmation_path, params: }
 
     context '正常時' do
-      let(:user) { create :user, :confirming }
+      let(:user) { create(:user, :confirming) }
 
       let(:params) do
         {
@@ -77,7 +77,7 @@ RSpec.describe User::RegistrationsController, type: :request do
     let(:params) { {} }
 
     context '正常時' do
-      let(:user) { create :user, :confirming }
+      let(:user) { create(:user, :confirming) }
 
       let(:params) do
         {
