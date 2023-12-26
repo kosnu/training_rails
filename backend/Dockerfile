@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1
-FROM ruby:3.1.2
+FROM ruby:3.3.0
 
 ENV RAILS_ENV=development
 ENV LANG C.UTF-8
