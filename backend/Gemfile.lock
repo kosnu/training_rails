@@ -72,7 +72,7 @@ GEM
     base64 (0.1.1)
     bcrypt (3.1.18)
     bindex (0.8.1)
-    bootsnap (1.12.0)
+    bootsnap (1.18.3)
       msgpack (~> 1.2)
     builder (3.2.4)
     capybara (3.37.1)
@@ -129,7 +129,7 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.2)
     minitest (5.19.0)
-    msgpack (1.5.2)
+    msgpack (1.7.2)
     net-imap (0.2.3)
       digest
       net-protocol
@@ -296,7 +296,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bootsnap (= 1.12.0)
+  bootsnap (= 1.18.3)
   capybara (= 3.37.1)
   debug (= 1.5.0)
   devise (= 4.8.1)
